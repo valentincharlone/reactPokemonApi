@@ -9,6 +9,7 @@ function App() {
 
   return (
     <Provider store={store} >
+      <h1>hola</h1>
         <div className="container mt-3">
           <Pokemos ></Pokemos>
        </div>
