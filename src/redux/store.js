@@ -1,7 +1,7 @@
 import { combineReducers} from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import pokeReducer from './pokeDucks';
-import usuarioReducer, {leerUsuarioActivoAccion} from './usuarioDucks';
+import usuarioReducer, {leerUsuarioAccion} from './usuarioDucks';
 
  
 const rootReducer = combineReducers({
@@ -13,6 +13,6 @@ export default function generateStore() {
     const store = configureStore({
         reducer: rootReducer
     });
-    leerUsuarioActivoAccion()(store.dispatch)
+    leerUsuarioAccion()(store.dispatch)
     return store;
 }

@@ -1,5 +1,6 @@
 import {auth, firebase} from '../firebase'
 
+
 //data inicial
 const dataInicial = {
     loading: false,
@@ -20,7 +21,7 @@ export default function usuarioReducer (state = dataInicial, action){
         case USUARIO_ERROR:
             return{...dataInicial}
         case USUARIO_EXITO:
-            return{...state, loading: false, user:action.payload, activo:true}
+            return{...state, loading: false, user:action.payload.user, activo:true}
         case CERRAR_SESION:
             return{...dataInicial}
         default:
@@ -29,19 +30,21 @@ export default function usuarioReducer (state = dataInicial, action){
 }
 
 //action
-export const ingresoUsuarioAccion = () => async(dispatch) =>{
+export const accederAccion = () => async(dispatch) =>{
     dispatch ({
         type : LOADING
     })
     try {
-        const provider = new firebase.auth.GoogleAuthProvider ();
+        const provider = new firebase.auth.GoogleAuthProvider();
         const res = await auth.signInWithPopup(provider)
         console.log(res)
         dispatch({
             type: USUARIO_EXITO,
             payload: {
-                uid: res.user.uid,
-                email: res.user.email
+                user : {
+                    uid: res.user.uid,
+                    email: res.user.email
+                }
             }
         })
         localStorage.setItem('usuario', JSON.stringify({
@@ -56,11 +59,13 @@ export const ingresoUsuarioAccion = () => async(dispatch) =>{
     }
 }
 
-export const leerUsuarioActivoAccion = () => (dispatch) => {
-    if (localStorage.getItem('usuario')){
+export const leerUsuarioAccion = () => async (dispatch) => {
+    if(localStorage.getItem('usuario')){
         dispatch({
             type: USUARIO_EXITO,
-            payload: JSON.parse(localStorage.getItem('usuario'))
+            payload: {
+                user: JSON.parse(localStorage.getItem('usuario'))
+            }
         })
     }
 }
