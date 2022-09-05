@@ -3,6 +3,7 @@ import React from 'react';
 import Pokemos from './components/Pokemos';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
+import Perfil from './components/Perfil';
 
 import {
   BrowserRouter as Router,
@@ -56,6 +57,7 @@ function App() {
         <Navbar />
         <Switch>
           <RutaProtegida component={Pokemos} path="/" exact/>
+          <RutaProtegida component={Perfil} path="/perfil" exact/>
           {/* <Route component={Pokemones} path="/" exact/> */}
           <Route component={Login} path="/login" exact/>
         </Switch>
