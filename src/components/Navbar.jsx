@@ -16,8 +16,10 @@ const Navbar = (props) => {
     const activo = useSelector(store => store.usuario.activo)
 
     return (
-        <div className="navbar navbar-dark bg-dark border-2">
-            <Link to="/" className="navbar-brand m-2">Poke API</Link>
+        <div className="navbar navbar-dark bg-dark border border-3">
+            <Link to="/" className="navbar-brand m-2">
+                <h2 className='fst-italic fs-3 m-2'>POKE API</h2>
+            </Link>
             <div>
             <div className="d-flex">
                     {

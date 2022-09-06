@@ -22,23 +22,23 @@ const Pokemos = () => {
   return (
     <div className='row'>
         <div className='col-md-6'>
-            <h2>POKEBOLA</h2>    
+            <h2 className='m-2'>POKEBOLA</h2>    
             <div className='d-flex justify-content-between'>
 
                 {
                     pokemones.length === 0 &&
-                    <button onClick={() => dispatch(obtenerPokemonesAccion())} className='btn btn-dark'>GET</button>
+                    <button onClick={() => dispatch(obtenerPokemonesAccion())} className='btn btn-dark m-2'>GET</button>
 
                 }
 
                 {
                     next &&
-                    <button onClick={() => dispatch(siguientePokemonAccion())} className='btn btn-dark'>Next</button>
+                    <button onClick={() => dispatch(siguientePokemonAccion())} className='btn btn-dark m-2'>Next</button>
                 }
 
                 {
                     previous &&
-                    <button onClick={() => dispatch(anteriorPokemonAccion())} className='btn btn-dark'>Previous</button>
+                    <button onClick={() => dispatch(anteriorPokemonAccion())} className='btn btn-dark m-2'>Previous</button>
                 }
             </div>
 
@@ -47,10 +47,10 @@ const Pokemos = () => {
             <ul className="list-group mt-3 text-uppercase">
             {
                 pokemones.map(item => (
-                    <li className="list-group-item" key={item.name} >
+                    <li className="list-group-item m-1" key={item.name} >
                         {item.name}
                         <button 
-                            className="btn btn-dark btn-sm float-end"
+                            className="btn btn-dark btn-sm float-end "
                             onClick={() => dispatch(unPokeDetalleAccion(item.url))}
                         >
                             Detalle
@@ -61,8 +61,8 @@ const Pokemos = () => {
         </ul>
         
         </div>
-        <div className="col-md-6 mt-1">
-            <h2>Details Pokemon</h2>
+        <div className="col-md-6 mt-4">
+            <h2>DETAILS POKEMON</h2>
             <Details></Details>
         </div>
     </div>
